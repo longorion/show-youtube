@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Player YouTube</title>
+    <meta charset="UTF-8">
+</head>
+
+<body>
+    <div class="thumbnail-container">
+        <a href="javascript:void(0);" rel="nofollow" title="Xem Clip">
+            <!-- <img src="pics-play/?pic=1699094379-toa-nha-mplaza-le-duan.jpg" alt="Thumbnail video" class="thumbnail"
+                loading="lazy"> -->
+            <img src="toa-nha-mplaza-le-duan.jpg" alt="Thumbnail video" class="thumbnail" loading="lazy">
+        </a>
+    </div>
+    <div class="modal" id="myModal" title="Nhấn để thoát">
+        <div class="modal-content">
+            <iframe id="youtube-player" width="980" height="735" src="" frameborder="0" allowfullscreen loading="lazy"></iframe>
+
+        </div>
+    </div>
+</body>
+
+</html>
+
+<style>
+    .thumbnail-container {
+        text-align: center;
+        width: 100%;
+    }
+    .thumbnail {
+        max-width: 100%;
+        cursor: pointer;
+    }
+    .modal {
+        display: none;
+        position: fixed;
+        z-index: 1;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgba(0, 0, 0, 0.8);
+    }
+    .modal-content {
+        margin: 6% auto;
+        padding: 0;
+        border: 1px solid #fff;
+        width: fit-content;
+        box-sizing: border-box;
+        clear: both;
+    }
+</style>
+<script>
+    const thumbnail = document.querySelector('.thumbnail');
+    const modal = document.getElementById('myModal');
+    const youtubePlayer = document.getElementById('youtube-player');
+    thumbnail.addEventListener('click', () => {
+        const videoId = 'MdONMkCDfv4'; // Thay thế bằng ID video YouTube của bạn
+        youtubePlayer.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&controls=0&fs=0&loop=1&start=0&iv_load_policy=1`;
+        modal.style.display = 'block';
+    });
+    modal.addEventListener('click', (event) => {
+        if (event.target == modal) {
+            modal.style.display = 'none';
+            youtubePlayer.src = "";
+        }
+    });
+</script>
